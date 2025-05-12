@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Menu non accessible</title>
+        <link rel="stylesheet" href="styles.css" />
+        <style>
+            nav ul {
+                list-style: none;
+                display: flex;
+                gap: 20px;
+            }
+
+            .submenu {
+                display: none;
+                position: absolute;
+                list-style: none;
+                margin-top: 5px;
+            }
+
+            .has-submenu:hover .submenu {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li class="has-submenu">
+                    <a href="#">Services</a>
+                    <ul class="submenu">
+                        <li><a href="/audit">Audit</a></li>
+                        <li><a href="/formation">Formation</a></li>
+                    </ul>
+                </li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </body>
+</html>

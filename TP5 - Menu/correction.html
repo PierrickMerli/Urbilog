@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Menu accessible</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <nav aria-label="Menu principal">
+            <ul role="menubar">
+                <li role="none"><a role="menuitem" href="/">Accueil</a></li>
+
+                <li role="none">
+                    <button id="services-btn" role="menuitem" aria-haspopup="true" aria-controls="submenu-services" aria-expanded="false">Services</button>
+                    <ul role="menu" id="submenu-services" class="submenu" aria-label="Sous-menu Services">
+                        <li role="none"><a role="menuitem" href="/audit">Audit</a></li>
+                        <li role="none"><a role="menuitem" href="/formation">Formation</a></li>
+                    </ul>
+                </li>
+
+                <li role="none"><a role="menuitem" href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <script>
+            const btn = document.getElementById("services-btn");
+            const submenu = document.getElementById("submenu-services");
+            const menuItems = submenu.querySelectorAll('[role="menuitem"]');
+
+            // Fonction pour ouvrir/fermer le sous-menu
+            function toggleSubmenu(open) {
+                btn.setAttribute("aria-expanded", String(open));
+                submenu.classList.toggle("visible", open);
+            }
+
+            // Gestionnaire de clic
+            btn.addEventListener("click", () => {
+                const isOpen = btn.getAttribute("aria-expanded") === "true";
+                toggleSubmenu(!isOpen);
+            });
+
+            // Gestionnaire de touches pour le bouton
+            btn.addEventListener("keydown", (e) => {
+                switch (e.key) {
+                    case "Enter":
+                    case " ":
+                        e.preventDefault();
+                        const isOpen = btn.getAttribute("aria-expanded") === "true";
+                        toggleSubmenu(!isOpen);
+                        if (!isOpen) {
+                            menuItems[0].focus();
+                        }
+                        break;
+                    case "Escape":
+                        toggleSubmenu(false);
+                        btn.focus();
+                        break;
+                    case "ArrowDown":
+                        e.preventDefault();
+                        if (btn.getAttribute("aria-expanded") === "false") {
+                            toggleSubmenu(true);
+                            menuItems[0].focus();
+                        }
+                        break;
+                }
+            });
+
+            // Gestionnaire de touches pour les éléments du sous-menu
+            menuItems.forEach((item, index) => {
+                item.addEventListener("keydown", (e) => {
+                    switch (e.key) {
+                        case "ArrowDown":
+                            e.preventDefault();
+                            const nextIndex = (index + 1) % menuItems.length;
+                            menuItems[nextIndex].focus();
+                            break;
+                        case "ArrowUp":
+                            e.preventDefault();
+                            if (index === 0) {
+                                btn.focus();
+                                toggleSubmenu(false);
+                            } else {
+                                menuItems[index - 1].focus();
+                            }
+                            break;
+                        case "Escape":
+                            toggleSubmenu(false);
+                            btn.focus();
+                            break;
+                    }
+                });
+            });
+
+            // Fermer le sous-menu si on clique en dehors
+            document.addEventListener("click", (e) => {
+                if (!btn.contains(e.target) && !submenu.contains(e.target)) {
+                    toggleSubmenu(false);
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,80 @@
+/* Styles communs pour les onglets */
+.tabs button,
+[role="tab"] {
+    margin-right: 10px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    background: #f5f5f5;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.tabs button:hover,
+[role="tab"]:hover {
+    background: #e5e5e5;
+}
+
+.tabs button:focus,
+[role="tab"]:focus {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+}
+
+/* Styles pour le contenu des onglets */
+.tab-content,
+[role="tabpanel"] {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.tab-content.active,
+[role="tabpanel"].active {
+    display: block;
+}
+
+/* Styles pour les liens */
+.tab-content a,
+[role="tabpanel"] a {
+    display: block;
+    margin: 10px 0;
+    color: #0066cc;
+    text-decoration: none;
+    padding: 5px 0;
+}
+
+.tab-content a:hover,
+[role="tabpanel"] a:hover {
+    text-decoration: underline;
+}
+
+.tab-content a:focus,
+[role="tabpanel"] a:focus {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+}
+
+/* Styles pour les titres */
+.tab-content h2,
+[role="tabpanel"] h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Styles pour les paragraphes */
+.tab-content p,
+[role="tabpanel"] p {
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Style spécifique pour l'onglet actif */
+[role="tab"][aria-selected="true"] {
+    background: #0066cc;
+    color: white;
+    border-color: #0066cc;
+} 

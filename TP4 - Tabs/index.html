@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Tabs non accessible</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="tabs">
+            <button onclick="showTab(0)">Ressources Web</button>
+            <button onclick="showTab(1)">Outils de développement</button>
+            <button onclick="showTab(2)">Références</button>
+        </div>
+        <div id="content">
+            <div class="tab-content" id="tab-0">
+                <h2>Ressources Web</h2>
+                <a href="#">Guide d'accessibilité WCAG</a>
+                <a href="#">Documentation ARIA</a>
+                <a href="#">Bonnes pratiques HTML</a>
+                <p>Essayez de naviguer avec la touche Tab pour voir les problèmes d'accessibilité</p>
+            </div>
+            <div class="tab-content" id="tab-1">
+                <h2>Outils de développement</h2>
+                <a href="#">Chrome DevTools</a>
+                <a href="#">Firefox Developer Tools</a>
+                <a href="#">VS Code Extensions</a>
+                <p>Essayez de naviguer avec les fleches (c'est un composant accessible) pour voir les problèmes d'accessibilité</p>
+            </div>
+            <div class="tab-content" id="tab-2">
+                <h2>Références</h2>
+                <a href="#">MDN Web Docs</a>
+                <a href="#">Stack Overflow</a>
+                <a href="#">GitHub</a>
+                <p>Essayez de naviguer avec les fleches (c'est un composant accessible) pour voir les problèmes d'accessibilité</p>
+            </div>
+        </div>
+
+        <script>
+            function showTab(index) {
+                const contents = document.querySelectorAll(".tab-content");
+                contents.forEach((c, i) => {
+                    c.classList.toggle("active", i === index);
+                });
+            }
+            showTab(0);
+        </script>
+    </body>
+</html>

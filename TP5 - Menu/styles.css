@@ -1,0 +1,101 @@
+/* Styles de base pour la navigation */
+nav {
+    background: #f8f9fa;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Styles pour la barre de menu principale */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+/* Styles pour les éléments de menu */
+nav ul li {
+    position: relative;
+}
+
+/* Styles pour les liens et boutons */
+nav a,
+nav button {
+    text-decoration: none;
+    color: #333;
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+nav a:hover,
+nav button:hover {
+    background-color: #e9ecef;
+}
+
+nav a:focus,
+nav button:focus {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+}
+
+/* Styles pour le sous-menu */
+.submenu {
+    display: none;
+    position: absolute;
+    list-style: none;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    background: white;
+    min-width: 200px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.submenu.visible {
+    display: block;
+}
+
+/* Styles pour les éléments du sous-menu */
+.submenu li {
+    width: 100%;
+}
+
+.submenu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.submenu a:hover {
+    background-color: #f8f9fa;
+}
+
+/* Indicateur visuel pour le bouton avec sous-menu */
+button[aria-haspopup="true"] {
+    padding-right: 2rem;
+    position: relative;
+}
+
+button[aria-haspopup="true"]::after {
+    content: "▼";
+    font-size: 0.8em;
+    position: absolute;
+    right: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.2s;
+}
+
+button[aria-expanded="true"]::after {
+    transform: translateY(-50%) rotate(180deg);
+} 

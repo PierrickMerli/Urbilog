@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Toast accessible</title>
+        <style>
+            #toast {
+                display: none;
+                background: #222;
+                color: white;
+                padding: 10px 20px;
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                border-radius: 4px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            }
+
+            #toast.visible {
+                display: block;
+            }
+
+            button {
+                padding: 8px 16px;
+                background: #0066cc;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background: #0052a3;
+            }
+
+            button:focus {
+                outline: 2px solid #0066cc;
+                outline-offset: 2px;
+            }
+        </style>
+    </head>
+    <body>
+        <button onclick="showToast()">Envoyer</button>
+
+        <!-- Région live dédiée aux notifications -->
+        <div id="toast" aria-live="assertive" aria-atomic="true"></div>
+
+        <script>
+            const toast = document.getElementById("toast");
+            let timeoutId = null;
+
+            function showToast() {
+                // Annuler le timeout précédent si existant
+                if (timeoutId) {
+                    clearTimeout(timeoutId);
+                    toast.classList.remove("visible");
+                }
+
+                // Réinitialiser le contenu
+                toast.textContent = "";
+                
+                // Forcer un reflow pour s'assurer que le changement est détecté
+                void toast.offsetWidth;
+                
+                // Mettre à jour le contenu et afficher
+                toast.textContent = "Message envoyé !";
+                toast.classList.add("visible");
+
+                // Nettoyer après 3 secondes
+                timeoutId = setTimeout(() => {
+                    toast.classList.remove("visible");
+                    // Attendre la fin de l'animation avant de nettoyer le contenu
+                    setTimeout(() => {
+                        toast.textContent = "";
+                    }, 300);
+                }, 3000);
+            }
+        </script>
+    </body>
+</html>

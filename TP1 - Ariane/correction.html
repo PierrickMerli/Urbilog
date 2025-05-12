@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <title>TP1 - Correction</title>
+        <style>
+            nav ol {
+                list-style: none;
+                padding: 0;
+                display: flex;
+            }
+
+            nav ol li + li::before {
+                content: ">";
+                margin: 0 8px;
+            }
+
+            nav ol li a {
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>TP1 - Correction</h1>
+        <p>
+            <strong>Objectifs pédagogiques</strong>
+            <ul>
+                <li>Comprendre les problématiques de breadcrumb.</li>
+                <li>Utiliser aria-current pour indiquer la page active.</li>
+            </ul>
+        </p> 
+        <nav aria-label="Fil d'Ariane">
+            <ol>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/categorie">Catégorie</a></li>
+                <li aria-current="page">Produit</li>
+            </ol>
+        </nav>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Tooltip non accessible</title>
+        <style>
+            .tooltip {
+                position: absolute;
+                background: black;
+                color: white;
+                padding: 5px 10px;
+                border-radius: 5px;
+                display: none;
+            }
+
+            .has-tooltip:hover + .tooltip {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <label for="email">Email :</label>
+        <input id="email" class="has-tooltip" type="email" />
+        <div class="tooltip">Veuillez entrer une adresse valide.</div>
+    </body>
+</html>

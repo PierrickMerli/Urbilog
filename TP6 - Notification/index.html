@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Toast non accessible</title>
+        <style>
+            #toast {
+                display: none;
+                background: #222;
+                color: white;
+                padding: 10px 20px;
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <button onclick="showToast()">Envoyer</button>
+        <div id="toast">Message envoyé !</div>
+
+        <script>
+            function showToast() {
+                const toast = document.getElementById("toast");
+                toast.style.display = "block";
+                setTimeout(() => {
+                    toast.style.display = "none";
+                }, 3000);
+            }
+        </script>
+    </body>
+</html>
