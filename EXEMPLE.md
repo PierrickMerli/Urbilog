@@ -1,1 +1,1 @@
-https://qualif-arc-refonte2025.havasdigitalfactory.net/sinformer-sur-le-cancer/
+https://forms.office.com/Pages/ResponsePage.aspx?id=A5Qr-BLLyUa14SZO1TU6mXtkNG4EwblNhM8bllS1eMBUNDM5M1ZCNE43TlQwQ1VFUUNNNzlQNTA3Vi4u
